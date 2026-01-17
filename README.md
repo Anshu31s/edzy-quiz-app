@@ -72,8 +72,8 @@ This avoids CORS issues and keeps the frontend clean.
 
 ### 1) Clone the repo
 ```bash
-git clone <your-github-repo-url>
-cd <your-project-folder>
+git clone https://github.com/Anshu31s/edzy-quiz-app/
+cd edzy-quiz-app
 
 2) Install dependencies
 npm install
