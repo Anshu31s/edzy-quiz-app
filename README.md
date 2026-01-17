@@ -1,36 +1,96 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Edzy Frontend Hackathon — Task 3 (Quiz App)
 
-## Getting Started
+This project is built for **Edzy Frontend Hackathon - Task 3**.
 
-First, run the development server:
+A Quiz App where users can:
+- Select a subject
+- Select number of questions (5 / 10 / 15)
+- Attempt quiz **one question at a time**
+- Get immediate correct/incorrect feedback
+- Retry until correct
+- Track score + incorrect attempts
+- View summary & restart quiz
+- Bonus: per-question timer reset
 
+---
+
+## 🚀 Tech Stack
+
+- **Next.js (App Router)**
+- **TypeScript**
+- **Tailwind CSS**
+- **shadcn/ui**
+- **TanStack Query (React Query)**
+- **Next.js API Routes** (proxy)
+
+---
+
+## ✅ Features
+
+### Quiz Setup
+- Select subject (Class 10 - English, Maths, Science, Social Science)
+- Select number of questions (5 / 10 / 15)
+
+### Quiz Flow
+- Questions fetched from API (no hardcoding)
+- One question shown at a time
+- Progress indicator + progress bar
+- Immediate feedback:
+  - Wrong option highlights red
+  - Correct option highlights green
+- User must retry until correct to move forward
+
+### Score Summary
+- Final Score (correct answers)
+- Incorrect attempts count
+- Restart button to reattempt quiz
+
+### Bonus
+- Per-question timer (resets when question changes)
+
+---
+
+## 🔗 API Integration (Using Next API Route)
+
+Frontend does NOT call external API directly.
+
+✅ Frontend calls:
+POST /api/quiz
+
+
+✅ Next.js API Route proxies request to:
+
+
+https://api.paraheights.com/edzy-api/hackathon/task/quizDetails
+
+
+This avoids CORS issues and keeps the frontend clean.
+
+---
+
+## 📦 Installation & Setup
+
+### 1) Clone the repo
 ```bash
+git clone <your-github-repo-url>
+cd <your-project-folder>
+
+2) Install dependencies
+npm install
+
+3) Run the dev server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Open in browser:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+http://localhost:3000
 
-## Learn More
+🧪 Payload Example
 
-To learn more about Next.js, take a look at the following resources:
+Request body sent to API:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+{
+  "examSubjectName": "Class 10 - English",
+  "numberOfQuestions": 5
+}
